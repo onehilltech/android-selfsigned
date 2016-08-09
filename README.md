@@ -80,11 +80,11 @@ to `main/assets/server.crt` (or the assets folder for the target configuration).
 
 ### android-volley
 
-Use `VolleySelfTrust` to create a `RequestQueue` that is configured to use the
+Use `VolleySelfSigned` to create a `RequestQueue` that is configured to use the
 public certificate bundled as an asset:
 
 ```java
-VolleySelfTrust.newRequestQueue (context, "server.crt")
+VolleySelfSigned.newRequestQueue (context, "server.crt")
 ```
 
 Now, request executed on the returned `RequestQueue` that interact with an 
