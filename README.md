@@ -45,8 +45,8 @@ different list for different Gradle configurations:
 </resources>
 ```
 
-Define an `Application` class to initialize the `HostnameVerifier` for
-the `HttpsURLConnection`.
+Define an `Application` class to initialize the `DefaultHostnameVerifier`, 
+which is used by `HttpsURLConnection`.
 
 ```java
 public class TheApplication extends Application 
