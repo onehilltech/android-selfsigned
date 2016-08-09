@@ -51,12 +51,6 @@ which is used by `HttpsURLConnection`.
 ```java
 public class TheApplication extends Application 
 {
-  /// Collection of HostnameVerifier objects, such as the default one 
-  private final HostnameVerifiers verifiers_ = new HostnameVerifiers ();
-  
-  /// Simple verifier that uses a set of hostnames/IP addresses.
-  private final SimpleHostnameVerifier simpleHostnameVerifier_ = new SimpleHostnameVerifier ();
-
   @Override
   public void onCreate ()
   {
