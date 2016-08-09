@@ -7,8 +7,8 @@ android-selfsigned
 
 A simple library for supporting self-signed certificates in Android
 
-* Integrate with services that use **self-signed certificates**: 
-* **Preserve** existing security measures on the mobile device
+* Integrate with services that use **self-signed certificates**.
+* **Preserve** existing security measures on the mobile device.
 * Ideal for **prototyping and testing** using secure protocols.
 
 **NOTE.** We strongly recommend that you purchase a certificate from a trusted authority 
