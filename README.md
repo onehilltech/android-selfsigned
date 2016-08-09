@@ -83,7 +83,7 @@ to `main/assets/server.crt` (or the assets folder for the target configuration).
 Use `VolleySelfTrust` to create a `RequestQueue` that is configured to use the
 public certificate bundled as an asset:
 
-```
+```java
 VolleySelfTrust.newRequestQueue (context, "server.crt")
 ```
 
