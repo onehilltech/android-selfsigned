@@ -26,8 +26,7 @@ buildscript {
 }
 
 dependencies {
-  // w. android-volley
-  compile com.github.onehilltech.android-selfsigned:volley:x.y.z
+  compile com.github.onehilltech:android-selfsigned:x.y.z
 }
 ```
 
@@ -63,28 +62,13 @@ public class TheApplication extends Application
   {
     super.onCreate ();
 
-    // Get default verifier. Use it and the simple one.
-    HostnameVerifier defaultHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier ();
-
-    if (!(defaultHostnameVerifier instanceof HostnameVerifiers))
-      this.initHostnameVerifiers ();
-
-    // Load the hostnames, and add to the simple verifier.
     String [] hostnames = this.getResources ().getStringArray (R.array.hostnames);
-    this.simpleHostnameVerifier_.addAll (Arrays.asList (hostnames));
-  }
-
-  private void initHostnameVerifiers ()
-  {
-    this.verifiers_.add (HttpsURLConnection.getDefaultHostnameVerifier ());
-    this.verifiers_.add (this.simpleHostnameVerifier_);
-
-    HttpsURLConnection.setDefaultHostnameVerifier (this.verifiers_);
+    SelfSigned.getDefaultHostnameVerifier ().addAll (Arrays.asList (hostnames));
   }
 }
 ```
 
-Make sure you add the `Application` class to `AndroidManifest.xml`.
+Make sure you add the `TheApplication` class to `AndroidManifest.xml`.
 
 ```xml
 <application
@@ -99,6 +83,8 @@ Add the public certificate to the application's assets. For example, if
 the certificate is in a file named `server.crt`, then it must be added
 to `main/assets/server.crt` (or the assets folder for the target configuration).
 
+
+### android-volley
 
 Use `VolleySelfTrust` to create a `RequestQueue` that is configured to use the
 public certificate bundled as an asset:
