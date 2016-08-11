@@ -83,8 +83,8 @@ to `main/assets/server.crt` (or the assets folder for the target configuration).
 
 Now, determine the method for making secure requests:
 
-* [android-volley](README.md#android-volley)
-* [HttpsURLConnection](README.md#HttpsURLConnection)
+* [android-volley](#android-volley)
+* [HttpsURLConnection](#HttpsURLConnection)
 
 ### HttpsURLConnection
 
