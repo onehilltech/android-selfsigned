@@ -77,6 +77,32 @@ Add the public certificate to the application's assets. For example, if
 the certificate is in a file named `server.crt`, then it must be added
 to `main/assets/server.crt` (or the assets folder for the target configuration).
 
+### HttpsURLConnection
+
+First, create a `SSLContext` that uses the public certificate bundled as an
+asset:
+
+```java
+SSLContext sslContext = AndroidSelfSigned.newSSLContext (context, "server.crt");
+```
+
+Attach the `SSLContext` to a `HttpsURLConnection`:
+
+```java
+URL url = new URL ("https://www.google.com");
+HttpsURLConnection conn = (HttpsURLConnection)url.openConnection ();
+conn.setSSLSocketFactory (sslContext.getSocketFactory ());
+```
+
+You can even set the `SSLContext` as the default so you do not have to initialize
+the `SSLSocketFactory` for each `HttpsURLConnection`:
+
+```java
+HttpsURLConnection.setDefaultSSLSocketFactory (sslContext.getSocketFactory ());
+```
+
+If you use this approach, it is best to do so in the `Application` class for
+your application.
 
 ### android-volley
 
