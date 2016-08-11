@@ -18,7 +18,7 @@ when you move to production.
 
 #### Gradle
 
-```
+```groovy
 buildscript {
   repositories {
     maven { url "https://jitpack.io" }
@@ -26,7 +26,11 @@ buildscript {
 }
 
 dependencies {
-  compile com.github.onehilltech:android-selfsigned:x.y.z
+  # Only include if using HttpsURLConnection
+  compile com.github.onehilltech.android-selfsigned:android:x.y.z
+  
+  # Otherwise, use appropriate module for framework in use
+  compile com.github.onehilltech.android-selfsigned:android-volley:x.y.
 }
 ```
 
@@ -106,13 +110,14 @@ your application.
 
 ### android-volley
 
-Use `VolleySelfSigned` to create a `RequestQueue` that is configured to use the
-public certificate bundled as an asset:
+Volley uses `HttpsURLConnection` under the hood. If you **do not** set the 
+default `SSLSocketFactory`, as explained above, then you can use the helper 
+class to create a `RequestQueue` that supports self-signed certificates:
 
 ```java
 VolleySelfSigned.newRequestQueue (context, "server.crt")
 ```
 
-Now, request executed on the returned `RequestQueue` that interact with an 
+Now, requests executed on the returned `RequestQueue` that interact with an 
 hostname/IP address defined in the resources above will not throw the usual 
 security exceptions.
