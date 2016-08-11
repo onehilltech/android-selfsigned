@@ -18,7 +18,7 @@ when you move to production.
 
 #### Gradle
 
-```groovy
+```
 buildscript {
   repositories {
     maven { url "https://jitpack.io" }
