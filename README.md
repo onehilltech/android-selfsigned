@@ -81,6 +81,11 @@ Add the public certificate to the application's assets. For example, if
 the certificate is in a file named `server.crt`, then it must be added
 to `main/assets/server.crt` (or the assets folder for the target configuration).
 
+Now, determine the method for making secure requests:
+
+* [android-volley](README.md#android-volley)
+* [HttpsURLConnection](README.md#HttpsURLConnection)
+
 ### HttpsURLConnection
 
 First, create a `SSLContext` that uses the public certificate bundled as an
