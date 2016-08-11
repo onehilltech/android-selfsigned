@@ -41,8 +41,7 @@ android {
 
 dependencies {
     compile 'com.android.volley:volley:1.0.0'
-    compile project (':android')
-    compile 'com.github.onehilltech:selfsigned:0.5.1'
+    compile project(':android')
 
     androidTestCompile 'junit:junit:4.11'
     androidTestCompile('com.android.support.test:testing-support-lib:0.1') {
