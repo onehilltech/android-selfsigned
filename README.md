@@ -86,33 +86,6 @@ Now, determine the method for making secure requests:
 * [android-volley](#android-volley)
 * [HttpsURLConnection](#HttpsURLConnection)
 
-### HttpsURLConnection
-
-First, create a `SSLContext` that uses the public certificate bundled as an
-asset:
-
-```java
-SSLContext sslContext = AndroidSelfSigned.newSSLContext (context, "server.crt");
-```
-
-Attach the `SSLContext` to a `HttpsURLConnection`:
-
-```java
-URL url = new URL ("https://www.google.com");
-HttpsURLConnection conn = (HttpsURLConnection)url.openConnection ();
-conn.setSSLSocketFactory (sslContext.getSocketFactory ());
-```
-
-You can even set the `SSLContext` as the default so you do not have to initialize
-the `SSLSocketFactory` for each `HttpsURLConnection`:
-
-```java
-HttpsURLConnection.setDefaultSSLSocketFactory (sslContext.getSocketFactory ());
-```
-
-If you use this approach, it is best to do so in the `Application` class for
-your application.
-
 ### android-volley
 
 Volley uses `HttpsURLConnection` under the hood. If you **do not** set the 
@@ -126,3 +99,30 @@ VolleySelfSigned.newRequestQueue (context, "server.crt")
 Now, requests executed on the returned `RequestQueue` that interact with an 
 hostname/IP address defined in the resources above will not throw the usual 
 security exceptions.
+
+### HttpsURLConnection
+
+First, create a `SSLContext` that uses the public certificate bundled as an
+asset:
+
+```java
+SSLContext sslContext = AndroidSelfSigned.newSSLContext (context, "server.crt");
+```
+
+Attach the `SSLContext` to a `HttpsURLConnection`:
+
+```java
+URL url = new URL ("https://10.0.2.2");
+HttpsURLConnection conn = (HttpsURLConnection)url.openConnection ();
+conn.setSSLSocketFactory (sslContext.getSocketFactory ());
+```
+
+You can even set the `SSLContext` as the default so you do not have to initialize
+the `SSLSocketFactory` for each `HttpsURLConnection`:
+
+```java
+HttpsURLConnection.setDefaultSSLSocketFactory (sslContext.getSocketFactory ());
+```
+
+If you use this approach, it is best to do so in the `Application` class for
+your application.
