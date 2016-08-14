@@ -1,6 +1,7 @@
 android-selfsigned
 ==================
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--selfsigned-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/4130)
 [![Download](https://jitpack.io/v/onehilltech/android-selfsigned.svg)](https://jitpack.io/#onehilltech/android-selfsigned)
 [![Build Status](https://travis-ci.org/onehilltech/android-selfsigned.svg)](https://travis-ci.org/onehilltech/android-selfsigned)
 [![codecov.io](http://codecov.io/github/onehilltech/android-selfsigned/coverage.svg?branch=master)](http://codecov.io/github/onehilltech/android-selfsigned?branch=master)
