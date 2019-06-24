@@ -31,13 +31,13 @@ public class AndroidSelfSigned
       throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException
   {
     InputStream caInput = new BufferedInputStream (context.getAssets ().open (assetFile));
-    return newSSLContext(type, caInput);
+    return newSSLContext (type, caInput);
   }
 
   public static SSLContext newSSLContext (InputStream caInput)
       throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException
   {
-    return newSSLContext(DEFAULT_CA_TYPE, caInput);
+    return newSSLContext (DEFAULT_CA_TYPE, caInput);
   }
 
   public static SSLContext newSSLContext (String type, InputStream caInput)
