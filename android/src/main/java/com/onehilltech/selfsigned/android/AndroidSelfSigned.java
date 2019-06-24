@@ -30,9 +30,20 @@ public class AndroidSelfSigned
   public static SSLContext newSSLContext (Context context, String type, String assetFile)
       throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException
   {
-    CertificateFactory cf = CertificateFactory.getInstance (type);
     InputStream caInput = new BufferedInputStream (context.getAssets ().open (assetFile));
+    return newSSLContext (type, caInput);
+  }
 
+  public static SSLContext newSSLContext (InputStream caInput)
+      throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException
+  {
+    return newSSLContext (DEFAULT_CA_TYPE, caInput);
+  }
+
+  public static SSLContext newSSLContext (String type, InputStream caInput)
+      throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException
+  {
+    CertificateFactory cf = CertificateFactory.getInstance (type);
     try
     {
       Certificate ca = cf.generateCertificate (caInput);
